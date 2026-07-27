@@ -22,6 +22,7 @@ const ProjectList = forwardRef(({ posts, isOpen, onProjectClick }: ProjectListPr
   const previewBRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = useCallback((imageUrl: string) => {
+    if (!imageUrl) return; // no preview available for this project (asset missing)
     setHoveredImage(imageUrl);
 
     const nextLayer = activeLayer === "a" ? "b" : "a";
@@ -83,7 +84,7 @@ const ProjectList = forwardRef(({ posts, isOpen, onProjectClick }: ProjectListPr
       {/* 3. LISTADO DE PROYECTOS */}
       <div className={styles.list__wrapper}>
         {posts.map((post, i) => {
-          const imageUrl = urlFor(post.mainImage).url();
+          const imageUrl = post.hasImage !== false ? urlFor(post.mainImage).url() : "";
           
           return (
             <div

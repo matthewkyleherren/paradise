@@ -15,7 +15,8 @@ export const aboutQueries = {
       email,
       phone,
       video,
-      bgImage
+      bgImage,
+      "hasBgImage": defined(bgImage.asset->_id)
     }
   `,
 };

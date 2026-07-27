@@ -37,12 +37,19 @@ export default function PostClient({ slug }: { slug: string }) {
 
   useEffect(() => {
     if (!post) return;
+    // If the mainImage asset is missing (e.g. not yet migrated), skip the bg
+    // but still mark loading complete so the page intro can run.
+    if (post.hasMainImage === false) {
+      const t = setTimeout(() => setBgLoaded(true), 0);
+      return () => clearTimeout(t);
+    }
     const url = urlFor(post.mainImage).url();
     const img = new window.Image();
     img.onload = () => {
       setBgUrl(url);
       setBgLoaded(true);
     };
+    img.onerror = () => setBgLoaded(true);
     img.src = url;
   }, [post]);
 
@@ -51,19 +58,20 @@ export default function PostClient({ slug }: { slug: string }) {
       !bgLoaded ||
       !bgRef.current ||
       !headerRef.current ||
-      !infoRef.current ||
-      mediaItemsRef.current.length === 0
+      !infoRef.current
     ) return;
+
+    const mediaItems = mediaItemsRef.current.filter(Boolean);
 
     gsap.set(bgRef.current, { opacity: 0, scale: 1.05 });
     gsap.set(headerRef.current, { opacity: 0, x: -40 });
     gsap.set(infoRef.current, { opacity: 0, x: -40 });
-    gsap.set(mediaItemsRef.current, { opacity: 0, y: 60 });
+    if (mediaItems.length) gsap.set(mediaItems, { opacity: 0, y: 60 });
 
     postPageIntro(
       bgRef.current,
       infoRef.current,
-      mediaItemsRef.current,
+      mediaItems,
       headerRef.current
     );
   }, [bgLoaded]);

@@ -6,6 +6,7 @@ export const postQueries = {
       "slug": slug.current,
       basicInfo,
       mainImage,
+      "hasImage": defined(mainImage.asset->_id),
     }
   `,
   
@@ -15,8 +16,9 @@ export const postQueries = {
       title,
       description,
       mainImage,
+      "hasMainImage": defined(mainImage.asset->_id),
       basicInfo,
-      media,
+      "media": media[defined(asset->_id)],
       "next": *[_type == "post" && orderRank > ^.orderRank] | order(orderRank asc)[0] {
         title,
         "slug": slug.current

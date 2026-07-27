@@ -40,6 +40,7 @@ export default function MoreProjects({ currentSlug, onProjectClick }: MoreProjec
 
   const handleMouseEnter = useCallback(
     (imageUrl: string) => {
+      if (!imageUrl) return; // no preview available (asset missing)
       setHoveredImage(imageUrl);
       const nextLayer = activeLayer === "a" ? "b" : "a";
       setBgImages((prev) => ({ ...prev, [nextLayer]: imageUrl }));
@@ -95,7 +96,7 @@ export default function MoreProjects({ currentSlug, onProjectClick }: MoreProjec
 
       <div ref={listRef} className={styles.more__list}>
         {nextPosts.map(({ post, globalIndex }) => {
-          const imageUrl = urlFor(post.mainImage).url();
+          const imageUrl = post.hasImage !== false ? urlFor(post.mainImage).url() : "";
           return (
             <div
               key={post._id}

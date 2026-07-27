@@ -17,6 +17,7 @@ export default function AboutClient() {
   const contentRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const bgCanvasRef = useRef<HTMLCanvasElement>(null);
+  const introPlayedRef = useRef(false);
 
   useEffect(() => {
     client.fetch(aboutQueries.all).then((data) => setAbout(data as About));
@@ -24,6 +25,8 @@ export default function AboutClient() {
 
   useEffect(() => {
     if (!about) return;
+    // Skip bg preload when the asset is missing so the page intro isn't blocked
+    if (about.hasBgImage === false || !about.bgImage) return;
     const url = urlFor(about.bgImage).url();
     const img = new window.Image();
     img.onload = () => setBgUrl(url);
@@ -31,7 +34,8 @@ export default function AboutClient() {
   }, [about]);
 
   useEffect(() => {
-    if (!about || !contentRef.current || !bgUrl) return;
+    if (!about || !contentRef.current || introPlayedRef.current) return;
+    introPlayedRef.current = true;
     const els = Array.from(
       contentRef.current.querySelectorAll<HTMLElement>("[data-anim='about-el']")
     );

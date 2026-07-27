@@ -85,13 +85,15 @@ export const slideOutPostContent = (
     duration: 0.35,
     ease: "power2.in",
     stagger: 0.04,
-  })
-  .to(mediaItems, {
-    opacity: 0,
-    duration: 0.3,
-    ease: "power2.in",
-  }, "<")
-  .to(bgEl, {
+  });
+  if (mediaItems.length) {
+    tl.to(mediaItems, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+    }, "<");
+  }
+  tl.to(bgEl, {
     opacity: 0,
     scale: 1.08,
     duration: 0.5,
@@ -145,9 +147,9 @@ export const postPageIntro = (
 ) => {
   const tl = gsap.timeline();
   tl.add(fadeInBg(bgEl))
-    .add(fadeInInfo(infoEl))
-    .add(fadeInMedia(mediaItems), "-=0.9")
-    .add(fadeInDetails(detailsEl), "-=1.5");
+    .add(fadeInInfo(infoEl));
+  if (mediaItems.length) tl.add(fadeInMedia(mediaItems), "-=0.9");
+  tl.add(fadeInDetails(detailsEl), mediaItems.length ? "-=1.5" : "-=0.6");
   return tl;
 };
 

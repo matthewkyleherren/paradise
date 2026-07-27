@@ -7,6 +7,9 @@ export interface Post {
   title: string;
   slug: string;
   mainImage: SanityImageSource;
+  /** True when the mainImage asset actually exists in the dataset (projected in GROQ). */
+  hasImage?: boolean;
+  hasMainImage?: boolean;
   basicInfo: {
     client: string;
     year: number;
@@ -50,4 +53,5 @@ export interface About {
   video: SanityFileSource;
   clients: string[];
   bgImage: SanityImageSource;
+  hasBgImage?: boolean;
 }

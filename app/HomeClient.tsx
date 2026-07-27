@@ -106,11 +106,13 @@ export default function HomeClient() {
     const fetchPosts = async () => {
       const data = await client.fetch(postQueries.all);
       setPosts(data);
-      setCurrentPost(data[0]);
+      // First post shown in the slider = first post whose image asset exists
+      const firstWithImage = data.find((p: Post) => p.hasImage !== false);
+      setCurrentPost(firstWithImage ?? null);
       postsReadyRef.current = true;
 
       // Preload the first post's image
-      if (data[0]) {
+      if (firstWithImage) {
         const img = new window.Image();
         img.onload = () => {
           firstImageReadyRef.current = true;
@@ -120,7 +122,7 @@ export default function HomeClient() {
           firstImageReadyRef.current = true;
           checkAllReady();
         };
-        img.src = urlFor(data[0].mainImage).url();
+        img.src = urlFor(firstWithImage.mainImage).url();
       } else {
         firstImageReadyRef.current = true;
         checkAllReady();
@@ -138,7 +140,8 @@ export default function HomeClient() {
     fetchDescription();
   }, []);
 
-  const infinitePosts = useMemo(() => posts, [posts]);
+  // Only posts whose mainImage asset actually exists can be shown in the 3D slider
+  const infinitePosts = useMemo(() => posts.filter((p) => p.hasImage !== false), [posts]);
 
   /* ----------------------------------
      Init 3D Slider
@@ -333,26 +336,33 @@ export default function HomeClient() {
       // Show list and stagger items in
       gsap.set(listViewRef.current, { display: "flex" });
       const items = listViewRef.current.querySelectorAll("[data-list-item]");
-      gsap.fromTo(
-        items,
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.06, duration: 0.5, ease: "power2.out", delay: 0.25 }
-      );
+      if (items.length) {
+        gsap.fromTo(
+          items,
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.06, duration: 0.5, ease: "power2.out", delay: 0.25 }
+        );
+      }
     } else {
       // Stagger list items out
       if (listViewRef.current) {
         const items = listViewRef.current.querySelectorAll("[data-list-item]");
-        gsap.to(items, {
-          y: -16,
-          opacity: 0,
-          stagger: 0.03,
-          duration: 0.3,
-          ease: "power2.in",
-          onComplete: () => {
-            if (listViewRef.current) gsap.set(listViewRef.current, { display: "none" });
-            isListViewRef.current = false;
-          },
-        });
+        if (items.length) {
+          gsap.to(items, {
+            y: -16,
+            opacity: 0,
+            stagger: 0.03,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+              if (listViewRef.current) gsap.set(listViewRef.current, { display: "none" });
+              isListViewRef.current = false;
+            },
+          });
+        } else {
+          gsap.set(listViewRef.current, { display: "none" });
+          isListViewRef.current = false;
+        }
       }
 
       // Fade spiral back in
