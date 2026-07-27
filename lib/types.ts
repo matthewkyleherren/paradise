@@ -15,10 +15,10 @@ export interface Post {
     category: string;
     tools: string[];
   };
-  media: {
-    _type: "image" | "video";
-    url: string;
-  }[];
+  media: (
+    | (SanityImageSource & { _type: "image" })
+    | (SanityFileSource & { _type: "video" })
+  )[];
   description: PortableTextBlock[];
   next: {
     title: string;

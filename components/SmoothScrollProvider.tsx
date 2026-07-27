@@ -24,7 +24,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
       lenis.raf(time * 1000);
     });
     gsap.ticker.lagSmoothing(0);
-    (window as any).lenis = lenis;
+    window.lenis = lenis;
 
     const handleKey = (e: KeyboardEvent) => {
       const step = 100;
@@ -98,7 +98,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     return () => {
       gsap.ticker.remove(lenis.raf);
       lenis.destroy();
-      delete (window as any).lenis;
+      delete window.lenis;
       window.removeEventListener("keydown", handleKey);
       if (isHomepage) {
         window.removeEventListener("mousedown", handleMouseDown);

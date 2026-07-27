@@ -165,7 +165,7 @@ export default function PostClient({ slug }: { slug: string }) {
 
               <div ref={mediaContainerRef} className={styles.page__content__wrapper__media}>
                 {post.media.map((media, index) => {
-                  const src = media["_type"] === "image" ? urlFor(media).url() : videoUrlFor(media as any);
+                  const src = media["_type"] === "image" ? urlFor(media).url() : videoUrlFor(media);
                   return (
                     <div key={index} className={styles.page__content__wrapper__media__item} ref={(el) => { if (el) mediaItemsRef.current[index] = el; }} data-anim="post-media">
                       {media["_type"] === "image" ? (
@@ -199,7 +199,7 @@ export default function PostClient({ slug }: { slug: string }) {
             {/*
             <div className={styles.page__content__media}>
               {post.media.map((media, index) => {
-                const src = media["_type"] === "image" ? urlFor(media).url() : videoUrlFor(media as any);
+                const src = media["_type"] === "image" ? urlFor(media).url() : videoUrlFor(media);
                 return (
                   <div key={index} className={styles.page__content__media__item} ref={(el) => { if (el) mediaItemsRef.current[index] = el; }} data-anim="post-media">
                     {media["_type"] === "image" ? (
