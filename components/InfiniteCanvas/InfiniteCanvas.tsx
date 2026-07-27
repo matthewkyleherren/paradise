@@ -1,8 +1,6 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { Draggable } from 'gsap/Draggable';
-import { InertiaPlugin } from 'gsap/InertiaPlugin';
+import { gsap, Draggable, InertiaPlugin } from 'gsap/all';
 import imageUrlBuilder from '@sanity/image-url';
 import { Lab } from '@/lib/types';
 import { client } from '@/sanity/lib/client';

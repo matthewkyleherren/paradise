@@ -1,10 +1,10 @@
 import type { PortableTextBlock } from "@portabletext/types";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://jordigarreta.com").replace(/\/$/, "");
-export const SITE_NAME = "Jordi Garreta";
-export const SITE_TITLE = "Jordi Garreta — Creative Developer";
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://mp.fck.inc").replace(/\/$/, "");
+export const SITE_NAME = "Motel Paradise";
+export const SITE_TITLE = "Come in Paradise.";
 export const SITE_DESCRIPTION =
-  "Jordi Garreta is a creative developer based in Barcelona, building interactive, high-craft websites with Three.js, WebGL and motion design.";
+  "Girls with bad reputation for delivering good times.";
 
 export function portableTextToPlainText(blocks: PortableTextBlock[] = [], maxLength = 160): string {
   const text = (blocks || [])
