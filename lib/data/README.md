@@ -1,6 +1,6 @@
-# `products.json`
+# `profiles.json`
 
-The static catalogue behind `/product/[section]/[product]`. There is no CMS and
+The static catalogue behind `/profile/[section]/[profile]`. There is no CMS and
 no commerce backend behind these pages — the page reads this file and nothing
 else, so it renders identically offline.
 
@@ -9,7 +9,7 @@ It was extracted from the WE+AR TRBL site (a separate rebuild living in
 that data flattened into only what a page needs, with image paths rewritten to
 local assets.
 
-Read it through `lib/products.ts` rather than importing the JSON directly — the
+Read it through `lib/profiles.ts` rather than importing the JSON directly — the
 accessors there are the only place the shape is assumed.
 
 ## Top level
@@ -19,15 +19,15 @@ accessors there are the only place the shape is assumed.
 | `currency` | `string` | ISO 4217 code. `"EUR"`. Not present in the original export; chosen when the file was generated. |
 | `discount.amount` | `number` | Percentage off, as an integer (`10` = 10%). Carried over from the source; **nothing currently reads it**. |
 | `accessory` | `object` | See below. |
-| `products` | `array` | Two entries: `iki-sweat` and `iki-tee`. |
+|  `profiles` | `array` | Two entries: `iki-sweat` and `iki-tee`. |
 
 ## `accessory`
 
 A single bundled item (the IKI screen) that ships with every garment rather than
 being sold on its own. It has **no page of its own** and is deliberately absent
-from `products`.
+from `profiles`.
 
-Same fields as a product minus `sizes` and `collections`, plus a bare `images`
+Same fields as a profile entry minus `sizes` and `collections`, plus a bare `images`
 object. Its only role now is documentation of where the bundled price came from;
 the page no longer displays a price at all.
 
@@ -46,13 +46,13 @@ the page no longer displays a price at all.
 
 > `accessory.images` is nearly empty on purpose — see [Missing assets](#missing-assets).
 
-## A product
+## A profile entry
 
 ```jsonc
 {
   "id": 2286722744377,           // original Shopify product id; not used for routing
   "title": "SWEAT",              // display name, and the header toggle label
-  "slug": "iki-sweat",           // the [product] route segment
+  "slug": "iki-sweat",           // the [profile] route segment
   "type": "iki+sweat",           // original product_type; groups garment + bundled IKI
   "price": "250.00",             // string, not number — two decimals, no symbol
   "compareAtPrice": "350.00",    // string or null; the pre-bundle "was" price
@@ -63,7 +63,7 @@ the page no longer displays a price at all.
 ```
 
 `price` and `compareAtPrice` are **strings** because the source stored them that
-way; `lib/products.ts` does the `Number()` conversion. Neither is rendered any
+way; `lib/profiles.ts` does the `Number()` conversion. Neither is rendered any
 more — the page dropped sizes and buy — but both are kept so commerce can be
 reattached without re-running the export.
 
@@ -105,8 +105,8 @@ when a mobile set is missing.
 
 ```jsonc
 {
-  "src":   "/products/iki-sweat-1_mns-main-desktop.5e267408.jpg",
-  "webp":  "/products/iki-sweat-1_mns-main-desktop.56f4a774.webp", // or null
+  "src":   "/profiles/iki-sweat-1_mns-main-desktop.5e267408.jpg",
+  "webp":  "/profiles/iki-sweat-1_mns-main-desktop.56f4a774.webp", // or null
   "width": 1920,
   "height": 1080
 }
@@ -117,7 +117,7 @@ when a mobile set is missing.
 falls back to the webp if *that* is the only format present, so `src` is always
 usable on its own.
 
-Paths are public-relative — the files live in `public/products/` (65 files,
+Paths are public-relative — the files live in `public/profiles/` (65 files,
 ~11 MB) and are served statically.
 
 The filenames still carry the original encoding
@@ -134,7 +134,7 @@ and were dropped rather than emitted as dead paths:
   `accessory.images`.
 - The `tee-alone*-cart-mobile` crops.
 
-**No `main` image is affected** — all four gallery slides exist for both products
+**No `main` image is affected** — all four gallery slides exist for both entries
 in both sections, at both viewports. The gaps are confined to `preview` and
 `cart`, neither of which has a page yet.
 
@@ -144,7 +144,7 @@ There is no committed generator — the export was a one-off against
 `../newkiko/frontend/src/stubs/productsAll.js` and `../newkiko/assets/`. To redo
 it you would re-parse that stub, group images by the filename encoding above,
 resolve each against the assets directory (preferring an exact stem match, then
-any extension), and copy the survivors into `public/products/`.
+any extension), and copy the survivors into `public/profiles/`.
 
-If a real backend arrives, replace the accessors in `lib/products.ts` and delete
+If a real backend arrives, replace the accessors in `lib/profiles.ts` and delete
 this file; nothing else imports it.

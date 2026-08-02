@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import type { ProductImage } from "@/lib/products";
+import type { ProfileImage } from "@/lib/profiles";
 import styles from "./Gallery.module.scss";
 
 interface GalleryProps {
-  images: ProductImage[];
+  images: ProfileImage[];
   current: number;
   onChange: (index: number) => void;
   /** Mobile only: a vertical swipe reveals the description. */

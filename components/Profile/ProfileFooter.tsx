@@ -1,9 +1,9 @@
 "use client";
 
 import SlideSelector from "./SlideSelector";
-import styles from "./ProductFooter.module.scss";
+import styles from "./ProfileFooter.module.scss";
 
-interface ProductFooterProps {
+interface ProfileFooterProps {
   slideCount: number;
   currentSlide: number;
   onSlideSelect: (index: number) => void;
@@ -11,12 +11,12 @@ interface ProductFooterProps {
 }
 
 /** Bottom bar. The gallery index is all that lives down here. */
-export default function ProductFooter({
+export default function ProfileFooter({
   slideCount,
   currentSlide,
   onSlideSelect,
   isVisible,
-}: ProductFooterProps) {
+}: ProfileFooterProps) {
   if (slideCount <= 1) return null;
 
   return (

@@ -1,15 +1,15 @@
-// Product data layer.
+// Profile data layer.
 //
-// The catalogue is a static JSON export (`lib/data/products.json`) pulled out of
+// The catalogue is a static JSON export (`lib/data/profiles.json`) pulled out of
 // the WE+AR TRBL site — no CMS and no commerce backend behind it yet. Everything
-// the product page renders comes from here, so swapping in a real API later
+// the profile page renders comes from here, so swapping in a real API later
 // means replacing these accessors and nothing else.
-import catalogue from "./data/products.json";
+import catalogue from "./data/profiles.json";
 
 export type Collection = "mns" | "wmns";
 export type Viewport = "desktop" | "mobile";
 
-export interface ProductImage {
+export interface ProfileImage {
   src: string;
   /** webp sibling of `src`, when the export found one. */
   webp: string | null;
@@ -17,18 +17,18 @@ export interface ProductImage {
   height: number;
 }
 
-export interface ProductSize {
+export interface ProfileSize {
   id: number;
   title: string;
 }
 
 interface ImageSet {
-  main?: Partial<Record<Viewport, ProductImage[]>>;
-  preview?: Partial<Record<Viewport, ProductImage | null>>;
-  cart?: Partial<Record<Viewport, ProductImage | null>>;
+  main?: Partial<Record<Viewport, ProfileImage[]>>;
+  preview?: Partial<Record<Viewport, ProfileImage | null>>;
+  cart?: Partial<Record<Viewport, ProfileImage | null>>;
 }
 
-export interface Product {
+export interface Profile {
   id: number;
   title: string;
   slug: string;
@@ -37,7 +37,7 @@ export interface Product {
   compareAtPrice: string | null;
   /** Trusted HTML from the export — authored content, not user input. */
   description: string;
-  sizes: ProductSize[];
+  sizes: ProfileSize[];
   collections: Partial<Record<Collection, ImageSet>>;
 }
 
@@ -51,19 +51,19 @@ export interface Accessory {
   description: string;
 }
 
-const products = catalogue.products as unknown as Product[];
+const profiles = catalogue.profiles as unknown as Profile[];
 export const accessory = catalogue.accessory as unknown as Accessory;
 export const currency = catalogue.currency;
 export const discount = catalogue.discount;
 
 export const COLLECTIONS: Collection[] = ["mns", "wmns"];
 
-export function getProducts(): Product[] {
-  return products;
+export function getProfiles(): Profile[] {
+  return profiles;
 }
 
-export function getProduct(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+export function getProfile(slug: string): Profile | undefined {
+  return profiles.find((p) => p.slug === slug);
 }
 
 export function isCollection(value: string): value is Collection {
@@ -72,11 +72,11 @@ export function isCollection(value: string): value is Collection {
 
 /** Gallery images for one collection at one viewport, in the export's order. */
 export function getGallery(
-  product: Product,
+  profile: Profile,
   collection: Collection,
   viewport: Viewport
-): ProductImage[] {
-  return product.collections[collection]?.main?.[viewport] ?? [];
+): ProfileImage[] {
+  return profile.collections[collection]?.main?.[viewport] ?? [];
 }
 
 /**
@@ -84,8 +84,8 @@ export function getGallery(
  * button is the garment plus the accessory — matching the original site, where
  * a 250 sweat reads as 350 once IKI is included.
  */
-export function getTotalPrice(product: Product): number {
-  return Number(product.price) + Number(accessory.price);
+export function getTotalPrice(profile: Profile): number {
+  return Number(profile.price) + Number(accessory.price);
 }
 
 export function formatPrice(amount: number, currencyCode = currency): string {
@@ -98,34 +98,34 @@ export function formatPrice(amount: number, currencyCode = currency): string {
 }
 
 /**
- * Exactly what the client component needs for one product in one collection.
- * Handing the whole `Product` to a client component would serialise the other
+ * Exactly what the client component needs for one profile in one collection.
+ * Handing the whole `Profile` to a client component would serialise the other
  * collection's image set into the payload for nothing.
  */
-export interface ProductView {
+export interface ProfileView {
   title: string;
   slug: string;
   description: string;
-  images: Record<Viewport, ProductImage[]>;
+  images: Record<Viewport, ProfileImage[]>;
 }
 
-export function getProductView(product: Product, collection: Collection): ProductView {
+export function getProfileView(profile: Profile, collection: Collection): ProfileView {
   return {
-    title: product.title,
-    slug: product.slug,
-    description: product.description,
+    title: profile.title,
+    slug: profile.slug,
+    description: profile.description,
     images: {
-      desktop: getGallery(product, collection, "desktop"),
-      mobile: getGallery(product, collection, "mobile"),
+      desktop: getGallery(profile, collection, "desktop"),
+      mobile: getGallery(profile, collection, "mobile"),
     },
   };
 }
 
-/** Every (section, product) pair the route should pre-render. */
-export function getProductParams(): { section: Collection; product: string }[] {
+/** Every (section, profile) pair the route should pre-render. */
+export function getProfileParams(): { section: Collection; profile: string }[] {
   return COLLECTIONS.flatMap((section) =>
-    products
+    profiles
       .filter((p) => p.collections[section]?.main?.desktop?.length)
-      .map((p) => ({ section, product: p.slug }))
+      .map((p) => ({ section, profile: p.slug }))
   );
 }

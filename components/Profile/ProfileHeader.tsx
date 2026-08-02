@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./ProductHeader.module.scss";
+import styles from "./ProfileHeader.module.scss";
 
-interface ProductHeaderProps {
+interface ProfileHeaderProps {
   title: string;
   /** Where the back link points. */
   backHref: string;
@@ -18,14 +18,14 @@ interface ProductHeaderProps {
  * The description is an overlay on the same route, so the toggle never costs a
  * navigation and the gallery stays mounted behind it.
  */
-export default function ProductHeader({
+export default function ProfileHeader({
   title,
   backHref,
   backLabel,
   showDescription,
   onShowMedia,
   onShowDescription,
-}: ProductHeaderProps) {
+}: ProfileHeaderProps) {
   return (
     <header className={styles.root}>
       <Link href={backHref} className={styles.link}>

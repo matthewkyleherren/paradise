@@ -1,20 +1,20 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { ProductView as ProfileViewModel } from "@/lib/products";
+import type { ProfileView as ProfileViewModel } from "@/lib/profiles";
 import Gallery from "./Gallery";
-import ProductHeader from "./ProductHeader";
-import ProductFooter from "./ProductFooter";
+import ProfileHeader from "./ProfileHeader";
+import ProfileFooter from "./ProfileFooter";
 import Description from "./Description";
-import styles from "./ProductView.module.scss";
+import styles from "./ProfileView.module.scss";
 
 const MOBILE_WIDTH = 750;
 // Ignore the tail of a trackpad's inertia so one flick is one gesture.
 const WHEEL_THRESHOLD = 24;
 const GESTURE_COOLDOWN = 700;
 
-interface ProductViewProps {
-  product: ProfileViewModel;
+interface ProfileViewProps {
+  profile: ProfileViewModel;
   backHref?: string;
   backLabel?: string;
 }
@@ -23,11 +23,11 @@ interface ProductViewProps {
  * The route mounts this under a key of `section/slug`, so navigating between
  * entries remounts it and the local state (slide, description) resets on its own.
  */
-export default function ProductView({
-  product,
+export default function ProfileView({
+  profile,
   backHref = "/",
   backLabel = "Index",
-}: ProductViewProps) {
+}: ProfileViewProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showDescription, setShowDescription] = useState(false);
@@ -45,9 +45,9 @@ export default function ProductView({
 
   // Falls back to the desktop set: not every entry ships mobile crops.
   const images =
-    isMobile && product.images.mobile.length
-      ? product.images.mobile
-      : product.images.desktop;
+    isMobile && profile.images.mobile.length
+      ? profile.images.mobile
+      : profile.images.desktop;
 
   const openDescription = useCallback(() => {
     setShowDescription(true);
@@ -99,8 +99,8 @@ export default function ProductView({
       />
 
       <Description
-        title={product.title}
-        html={product.description}
+        title={profile.title}
+        html={profile.description}
         isVisible={showDescription}
         onClose={closeDescription}
         onScroll={(top) => {
@@ -108,8 +108,8 @@ export default function ProductView({
         }}
       />
 
-      <ProductHeader
-        title={product.title}
+      <ProfileHeader
+        title={profile.title}
         backHref={backHref}
         backLabel={backLabel}
         showDescription={showDescription}
@@ -117,7 +117,7 @@ export default function ProductView({
         onShowDescription={openDescription}
       />
 
-      <ProductFooter
+      <ProfileFooter
         isVisible={!showDescription}
         slideCount={images.length}
         currentSlide={currentSlide}

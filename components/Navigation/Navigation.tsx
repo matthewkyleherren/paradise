@@ -23,10 +23,10 @@ const Navigation = () => {
   const [about, setAbout] = useState<About | null>(null);
   const { viewMode, setViewMode } = useViewMode();
 
-  // The nav renders nothing on /studio and /product (see the early return
+  // The nav renders nothing on /studio and /profile (see the early return
   // below), so skip the fetch there rather than firing a request whose result
   // is discarded — and whose rejection surfaces as an unhandled page error.
-  const isHidden = pathname.includes("/studio") || pathname.startsWith("/product");
+  const isHidden = pathname.includes("/studio") || pathname.startsWith("/profile");
 
   useEffect(() => {
     if (isHidden) return;
@@ -104,7 +104,7 @@ const Navigation = () => {
     }
   };
 
-  // Product pages are a self-contained white surface with their own header and
+  // Profile pages are a self-contained white surface with their own header and
   // footer; the site nav would land on top of them.
   if (isHidden) return null;
 
