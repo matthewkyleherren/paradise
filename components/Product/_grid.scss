@@ -1,0 +1,83 @@
+// The TRBL layout system: a 12-column / 8-row grid inset by a fixed border,
+// dropping to 4 columns on mobile. Columns are computed off the inset width so
+// the outer margin never eats into a column.
+
+$border: 50px;
+$mobile-border: 25px;
+
+$max-columns: 12;
+$mobile-max-columns: 4;
+$max-rows: 8;
+
+$mobile-width: 750px;
+
+$color-black: #000;
+$color-white: #fff;
+$color-gray: #999;
+$color-silver: #ccc;
+
+$speed-fast: 0.2s;
+$speed-base: 0.3s;
+
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $mobile-width + 1px) {
+    @content;
+  }
+}
+
+@mixin width-column($columns: 1, $property: "width") {
+  @include desktop {
+    #{$property}: calc((100% - #{$border} * 2) * #{$columns} / #{$max-columns});
+  }
+
+  @include mobile {
+    #{$property}: calc(
+      (100% - #{$mobile-border} * 2) * #{$columns} / #{$mobile-max-columns}
+    );
+  }
+}
+
+@mixin width-column-with-border($columns: 1, $property: "width") {
+  @include desktop {
+    #{$property}: calc(
+      ((100% - #{$border} * 2) * #{$columns} / #{$max-columns}) + #{$border}
+    );
+  }
+
+  @include mobile {
+    #{$property}: calc(
+      ((100% - #{$mobile-border} * 2) * #{$columns} / #{$mobile-max-columns}) +
+        #{$mobile-border}
+    );
+  }
+}
+
+@mixin height-row-with-border($rows: 1, $property: "height") {
+  @include desktop {
+    #{$property}: calc(
+      ((100% - #{$border} * 2) * #{$rows} / #{$max-rows}) + #{$border}
+    );
+  }
+
+  @include mobile {
+    #{$property}: calc(
+      ((100% - #{$mobile-border} * 2) * #{$rows} / #{$max-rows}) + #{$mobile-border}
+    );
+  }
+}
+
+// The site's one type style: small, uppercase, wide-tracked mono.
+@mixin label {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

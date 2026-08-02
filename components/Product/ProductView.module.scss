@@ -1,0 +1,29 @@
+@use "./grid" as g;
+
+// A fixed, non-scrolling surface: the gallery fills the viewport and the
+// description arrives as an overlay, so the document itself never scrolls.
+// This also opts the route out of the site's dark shell.
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // 100dvh tracks mobile browser chrome as it collapses; the vh line is the
+  // fallback for anything without dynamic viewport units.
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: g.$color-white;
+
+  // The global reset paints every element in the light foreground colour for
+  // the dark shell; this page is white, so text has to be re-darkened here.
+  *,
+  p,
+  span,
+  li,
+  a,
+  div,
+  h1 {
+    color: g.$color-black;
+  }
+}

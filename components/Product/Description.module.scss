@@ -1,0 +1,150 @@
+@use "./grid" as g;
+
+.root {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: g.$color-white;
+  will-change: transform, opacity;
+}
+
+// The scroll container is the full panel so the scrollbar never sits in the
+// middle of the layout; padding lives on the inner wrapper instead.
+.body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.inner {
+  // Leave the header row clear, and the footer row at the bottom.
+  padding: calc(#{g.$border} * 2) g.$border calc(#{g.$border} * 1.5);
+
+  @include g.mobile {
+    padding: calc(#{g.$mobile-border} * 3 + env(safe-area-inset-top))
+      g.$mobile-border
+      calc(#{g.$mobile-border} * 4 + env(safe-area-inset-bottom));
+  }
+}
+
+.title {
+  @include g.label;
+
+  margin: 0 0 28px;
+  font-size: 11px;
+  color: g.$color-black;
+
+  @include g.mobile {
+    margin-bottom: 20px;
+  }
+}
+
+.copy {
+  // A readable measure on desktop; full width once there's no room to spare.
+  @include g.width-column(6);
+
+  color: g.$color-black;
+
+  @media (max-width: 1100px) {
+    @include g.width-column(8);
+  }
+
+  @include g.mobile {
+    width: 100%;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+
+  li {
+    @include g.label;
+
+    margin-bottom: 6px;
+    opacity: 0.55;
+  }
+
+  // Body copy is the one place the page drops its uppercase tracking. The
+  // global reset applies `text-transform: uppercase` with the universal
+  // selector, which lands on the inline <span>s directly — inheriting from the
+  // <p> is not enough, so the descendants have to be named too.
+  p,
+  p span,
+  p em,
+  p strong,
+  p a {
+    font-family: var(--font-geist-mono);
+    font-weight: 300;
+    letter-spacing: 0;
+    text-transform: none;
+    color: g.$color-black;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 20px;
+
+    @include g.mobile {
+      font-size: 13px;
+      line-height: 21px;
+      margin-bottom: 16px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  p span {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.close {
+  @include g.label;
+
+  position: absolute;
+  right: g.$border;
+  bottom: g.$border;
+  color: g.$color-black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  padding: 6px 0;
+  transition: opacity g.$speed-base ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include g.mobile {
+    right: g.$mobile-border;
+    bottom: calc(#{g.$mobile-border} + env(safe-area-inset-bottom));
+  }
+}

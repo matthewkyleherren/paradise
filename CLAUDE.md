@@ -22,10 +22,20 @@ This is a creative portfolio built with **Next.js App Router**, **Sanity CMS**, 
 - `/p/[slug]` — Individual project/post detail
 - `/lab` — Infinite canvas grid of experiments (GSAP Draggable)
 - `/about` — About page with tech stack and achievements
+- `/product/[section]/[product]` — Full-bleed image page with a description overlay
 - `/studio/[[...tool]]` — Sanity CMS admin
 
 ### Data Flow
 Pages fetch content from Sanity in `useEffect` via `client.fetch()` (defined in `/lib/`), store it in local `useState`, then trigger GSAP animation sequences. No global state manager — all state is local React hooks.
+
+**The product route is the exception**: it reads a static JSON catalogue (`lib/data/products.json`) through `lib/products.ts` — no Sanity, no backend, no fetch. See `lib/data/README.md` for the schema. Server component resolves params → `getProductView()` narrows the payload → the client component owns all interaction.
+
+### The product page (`/components/Product/`)
+A fixed, non-scrolling white surface that opts out of the site's dark shell. `Navigation` hides itself on `/product` (and `/studio`) — it would land on top of the page's own header.
+
+- **Gallery** — stacked, cross-faded slides. Prev/next via invisible half-screen click zones (desktop), swipe (mobile), the numbered index, or arrow keys. Nothing of the neighbouring slides is ever visible.
+- **Description** — a GSAP overlay on the *same route*, so the gallery never unmounts. Opens on scroll-down / swipe-up / the header toggle; closes on scroll-up at the top, Esc, or Close.
+- Mobile uses `100dvh` and `env(safe-area-inset-*)`; the breakpoint (750px) lives in `components/Product/_grid.scss` alongside the 12-column layout mixins ported from the source site.
 
 ### Animation System
 - **GSAP timelines** orchestrate page enter/exit transitions — see `/app/animations.ts`

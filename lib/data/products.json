@@ -1,0 +1,399 @@
+{
+  "currency": "EUR",
+  "discount": {
+    "amount": 10
+  },
+  "accessory": {
+    "id": 2286722121785,
+    "title": "IKI",
+    "slug": "iki",
+    "type": "iki",
+    "price": "100.00",
+    "compareAtPrice": null,
+    "description": "<ul>\n    <li>FLEXIBLE SCREEN</li>\n    <li>BLACK+WHITE COLOR/GREY TUNES</li>\n  </ul>\n  <p>\n    IKI (いき, “chic, stylish”) is a concept in aesthetics, an expression of simplicity, sophistication, spontaneity and originality.\n    we+ar TRBL is a full ecosystem, consisting of an electronic device “IKI”, a compatible garment and a mobile app.\n    With this ultra-flat, lightweight 6.8’’ screen, you can share what you think, how you feel, who you love… on your T-shirt! Using Bluetooth Low Energy (BLE) to interact with your smartphone, IKI can display slideshows of about 20 images that can be edited and enhanced with keywords or slogans via the TRBL app. Each shirt tells its own unique story.\n  </p>\n  <p>\n    Thanks to a dedicated Cloud, you can share content among the community, broadcast your creations to friends, or display ethical feeds from NGOs and third parties.\n  </p>\n  <p>\n    we+ar TRBL is the first social network on a garment, allowing you to be creative, original and to tell the world who and what you are!\n  </p>",
+    "images": {
+      "wmns": {
+        "cart": {
+          "desktop": {
+            "src": "/products/iki_wmns-cart-desktop.34ddd245.webp",
+            "webp": "/products/iki_wmns-cart-desktop.34ddd245.webp",
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      }
+    }
+  },
+  "products": [
+    {
+      "id": 1362777243705,
+      "title": "SWEAT",
+      "slug": "iki-sweat",
+      "type": "iki+sweat",
+      "price": "250.00",
+      "compareAtPrice": "350.00",
+      "description": "<ul> <li>GREY COLOR</li> <li>BLACK FRAME</li> <li>95% COTTON FLEECE</li> <li>5% METALLIC YARN</li> <li>MAGNETIC IKI POCKET</li> <li>SWEAT</li> </ul> <p><span>Obsidian black unisex sweat-shirt.</span><br><span>Fabrication of single and double knit jerseys and loop back knit.</span></p> <p><br><span>The seamless integration of the IKI screen into the garment is made through a technical textile progress which includes laser cut and heat welding with addition of a flexible metallic fiber tape. The tape is hear sealed to secure screen into the black frame and makes sure that the magnetic screen stays in shape, no matter how much you move.</span></p>",
+      "sizes": [
+        {
+          "id": 13023185961017,
+          "title": "S"
+        },
+        {
+          "id": 13024941277241,
+          "title": "M"
+        },
+        {
+          "id": 13024941342777,
+          "title": "L"
+        },
+        {
+          "id": 13024941375545,
+          "title": "XL"
+        }
+      ],
+      "collections": {
+        "mns": {
+          "preview": {
+            "desktop": {
+              "src": "/products/iki-sweat_mns-preview-desktop.3e5505c9.png",
+              "webp": "/products/iki-sweat_mns-preview-desktop.bf576fcc.webp",
+              "width": 2100,
+              "height": 1800
+            },
+            "mobile": {
+              "src": "/products/iki-sweat_mns-preview-mobile.52a98ce9.webp",
+              "webp": "/products/iki-sweat_mns-preview-mobile.52a98ce9.webp",
+              "width": 540,
+              "height": 804
+            }
+          },
+          "main": {
+            "desktop": [
+              {
+                "src": "/products/iki-sweat-1_mns-main-desktop.5e267408.jpg",
+                "webp": "/products/iki-sweat-1_mns-main-desktop.56f4a774.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-sweat-2_mns-main-desktop.86330e5c.jpg",
+                "webp": "/products/iki-sweat-2_mns-main-desktop.7cf0d0c3.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-sweat-3_mns-main-desktop.6dc969fb.jpg",
+                "webp": "/products/iki-sweat-3_mns-main-desktop.71cfd909.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-sweat-4_mns-main-desktop.077d7488.jpg",
+                "webp": "/products/iki-sweat-4_mns-main-desktop.c274a852.webp",
+                "width": 3200,
+                "height": 1800
+              }
+            ],
+            "mobile": [
+              {
+                "src": "/products/iki-sweat-1_mns-main-mobile.4775fa68.webp",
+                "webp": "/products/iki-sweat-1_mns-main-mobile.4775fa68.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-sweat-2_mns-main-mobile.580308c7.webp",
+                "webp": "/products/iki-sweat-2_mns-main-mobile.580308c7.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-sweat-3_mns-main-mobile.272730a3.webp",
+                "webp": "/products/iki-sweat-3_mns-main-mobile.272730a3.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-sweat-4_mns-main-mobile.90526dac.webp",
+                "webp": "/products/iki-sweat-4_mns-main-mobile.90526dac.webp",
+                "width": 1444,
+                "height": 812
+              }
+            ]
+          },
+          "cart": {
+            "desktop": {
+              "src": "/products/tee-alone-1_mns-cart-desktop.58085263.jpg",
+              "webp": "/products/tee-alone-1_mns-cart-desktop.199b589a.webp",
+              "width": 3200,
+              "height": 1800
+            }
+          }
+        },
+        "wmns": {
+          "preview": {
+            "desktop": {
+              "src": "/products/iki-sweat_wmns-preview-desktop.ae780eb4.png",
+              "webp": "/products/iki-sweat_wmns-preview-desktop.9d795bb5.webp",
+              "width": 2100,
+              "height": 1800
+            },
+            "mobile": {
+              "src": "/products/iki-sweat_wmns-preview-mobile.90522afe.webp",
+              "webp": "/products/iki-sweat_wmns-preview-mobile.90522afe.webp",
+              "width": 540,
+              "height": 804
+            }
+          },
+          "main": {
+            "desktop": [
+              {
+                "src": "/products/iki-sweat-1_wmns-main-desktop.c3d5c73e.jpg",
+                "webp": "/products/iki-sweat-1_wmns-main-desktop.55262620.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-sweat-2_wmns-main-desktop.d5e07f69.jpg",
+                "webp": "/products/iki-sweat-2_wmns-main-desktop.dd8a827c.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-sweat-3_wmns-main-desktop.d8bac6e9.jpg",
+                "webp": "/products/iki-sweat-3_wmns-main-desktop.dd74c172.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-sweat-4_wmns-main-desktop.e6e221d6.jpg",
+                "webp": "/products/iki-sweat-4_wmns-main-desktop.64fbf5e8.webp",
+                "width": 3200,
+                "height": 1800
+              }
+            ],
+            "mobile": [
+              {
+                "src": "/products/iki-sweat-1_wmns-main-mobile.52a6b3b6.webp",
+                "webp": "/products/iki-sweat-1_wmns-main-mobile.52a6b3b6.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-sweat-2_wmns-main-mobile.48148cff.webp",
+                "webp": "/products/iki-sweat-2_wmns-main-mobile.48148cff.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-sweat-3_wmns-main-mobile.f6b3e05d.webp",
+                "webp": "/products/iki-sweat-3_wmns-main-mobile.f6b3e05d.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-sweat-4_wmns-main-mobile.ad6970d4.webp",
+                "webp": "/products/iki-sweat-4_wmns-main-mobile.ad6970d4.webp",
+                "width": 1444,
+                "height": 812
+              }
+            ]
+          },
+          "cart": {
+            "desktop": {
+              "src": "/products/tee-alone-1_wmns-cart-desktop.85425812.jpg",
+              "webp": "/products/tee-alone-1_wmns-cart-desktop.55262620.webp",
+              "width": 3200,
+              "height": 1800
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1362932498489,
+      "title": "TEE",
+      "slug": "iki-tee",
+      "type": "iki+tee",
+      "price": "250.00",
+      "compareAtPrice": "350.00",
+      "description": "<ul> <li>OBSIDIAN COLOR</li> <li>GREY FRAME</li> <li>95% COTTON FLEECE</li> <li>5% METALLIC YARN</li> <li>MAGNETIC IKI POCKET</li> <li>TEE</li> </ul> <p>Obsidian black unisex tee-shirt in luxe fabrications of single and double knit jerseys and loop back knit.</p> <p>The seamless integration of the IKI screen into the garment is made through a technical textiles process which includes laser cut and heat welding with addition of a flexible metallic fiber tape. The tape is heat sealed to secure screen into the black frame and makes sure that the magnetic screen stays in shape, no matter how much you move.</p>",
+      "sizes": [
+        {
+          "id": 13025289437241,
+          "title": "S"
+        },
+        {
+          "id": 13025289470009,
+          "title": "M"
+        },
+        {
+          "id": 13025289502777,
+          "title": "L"
+        },
+        {
+          "id": 13025289535545,
+          "title": "XL"
+        }
+      ],
+      "collections": {
+        "mns": {
+          "preview": {
+            "desktop": {
+              "src": "/products/iki-tee_mns-preview-desktop-min.34a6c833.png",
+              "webp": "/products/iki-tee_mns-preview-desktop-min.0a2ac69e.webp",
+              "width": 2100,
+              "height": 1800
+            },
+            "mobile": {
+              "src": "/products/iki-tee_mns-preview-mobile-min.1ce7de42.webp",
+              "webp": "/products/iki-tee_mns-preview-mobile-min.1ce7de42.webp",
+              "width": 540,
+              "height": 804
+            }
+          },
+          "main": {
+            "desktop": [
+              {
+                "src": "/products/iki-tee-1_mns-main-desktop.09c39f78.jpg",
+                "webp": "/products/iki-tee-1_mns-main-desktop.473234da.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-tee-2_mns-main-desktop.6a87ec7c.jpg",
+                "webp": "/products/iki-tee-2_mns-main-desktop.529dc374.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-tee-3_mns-main-desktop.b98910fd.jpg",
+                "webp": "/products/iki-tee-3_mns-main-desktop.458a837f.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-tee-4_mns-main-desktop.ba9ced01.jpg",
+                "webp": "/products/iki-tee-4_mns-main-desktop.6337ac98.webp",
+                "width": 3200,
+                "height": 1800
+              }
+            ],
+            "mobile": [
+              {
+                "src": "/products/iki-tee-1_mns-main-mobile.fe0d2d04.webp",
+                "webp": "/products/iki-tee-1_mns-main-mobile.fe0d2d04.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-tee-2_mns-main-mobile.399f6618.webp",
+                "webp": "/products/iki-tee-2_mns-main-mobile.399f6618.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-tee-3_mns-main-mobile.3a612b42.webp",
+                "webp": "/products/iki-tee-3_mns-main-mobile.3a612b42.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-tee-4_mns-main-mobile.dfcdec92.webp",
+                "webp": "/products/iki-tee-4_mns-main-mobile.dfcdec92.webp",
+                "width": 1444,
+                "height": 812
+              }
+            ]
+          },
+          "cart": {
+            "desktop": {
+              "src": "/products/tee-alone-1_mns-cart-desktop.58085263.jpg",
+              "webp": "/products/tee-alone-1_mns-cart-desktop.199b589a.webp",
+              "width": 3200,
+              "height": 1800
+            }
+          }
+        },
+        "wmns": {
+          "preview": {
+            "desktop": {
+              "src": "/products/iki-tee_wmns-preview-desktop-min.c2cf7f06.png",
+              "webp": "/products/iki-tee_wmns-preview-desktop-min.7beb02f1.webp",
+              "width": 2100,
+              "height": 1800
+            },
+            "mobile": {
+              "src": "/products/iki-tee_wmns-preview-mobile-min.aea2367d.webp",
+              "webp": "/products/iki-tee_wmns-preview-mobile-min.aea2367d.webp",
+              "width": 540,
+              "height": 804
+            }
+          },
+          "main": {
+            "desktop": [
+              {
+                "src": "/products/iki-tee-1_wmns-main-desktop.44c78255.jpg",
+                "webp": "/products/iki-tee-1_wmns-main-desktop.b0e8884a.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-tee-2_wmns-main-desktop.75f1450d.jpg",
+                "webp": "/products/iki-tee-2_wmns-main-desktop.a85bc58a.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-tee-3_wmns-main-desktop.f9baca1c.jpg",
+                "webp": "/products/iki-tee-3_wmns-main-desktop.7a198f0c.webp",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "src": "/products/iki-tee-4_wmns-main-desktop.bc8f7b9d.jpg",
+                "webp": "/products/iki-tee-4_wmns-main-desktop.b715a910.webp",
+                "width": 3200,
+                "height": 1800
+              }
+            ],
+            "mobile": [
+              {
+                "src": "/products/iki-tee-1_wmns-main-mobile.7ca4b6fe.webp",
+                "webp": "/products/iki-tee-1_wmns-main-mobile.7ca4b6fe.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-tee-2_wmns-main-mobile.bddb331c.webp",
+                "webp": "/products/iki-tee-2_wmns-main-mobile.bddb331c.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-tee-3_wmns-main-mobile.39d5c9c3.webp",
+                "webp": "/products/iki-tee-3_wmns-main-mobile.39d5c9c3.webp",
+                "width": 1444,
+                "height": 812
+              },
+              {
+                "src": "/products/iki-tee-4_wmns-main-mobile.5e8932fd.webp",
+                "webp": "/products/iki-tee-4_wmns-main-mobile.5e8932fd.webp",
+                "width": 1444,
+                "height": 812
+              }
+            ]
+          },
+          "cart": {
+            "desktop": {
+              "src": "/products/tee-alone-1_wmns-cart-desktop.85425812.jpg",
+              "webp": "/products/tee-alone-1_wmns-cart-desktop.55262620.webp",
+              "width": 3200,
+              "height": 1800
+            }
+          }
+        }
+      }
+    }
+  ]
+}

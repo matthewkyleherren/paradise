@@ -1,0 +1,93 @@
+@use "./grid" as g;
+
+.root {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: g.$border;
+  padding-bottom: 0;
+  pointer-events: none;
+
+  @include g.mobile {
+    padding: g.$mobile-border;
+    padding-top: calc(#{g.$mobile-border} + env(safe-area-inset-top));
+    padding-bottom: 0;
+  }
+
+  // The labels are dark and sit straight on the photograph, which can be any
+  // colour. A soft light wash keeps them legible without reading as a bar.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 180%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0)
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  // Only the controls take pointer events, so the gallery stays clickable.
+  a,
+  button {
+    pointer-events: auto;
+  }
+}
+
+.toggle {
+  display: flex;
+  gap: 24px;
+
+  @include g.mobile {
+    gap: 16px;
+  }
+}
+
+.link {
+  @include g.label;
+
+  position: relative;
+  display: inline-block;
+  color: g.$color-black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  // Comfortable touch target without changing the visual size.
+  padding: 4px 0;
+  transition: opacity g.$speed-base ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform g.$speed-base ease;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &[data-active="true"] {
+    opacity: 1;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

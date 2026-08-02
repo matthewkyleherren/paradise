@@ -23,13 +23,24 @@ const Navigation = () => {
   const [about, setAbout] = useState<About | null>(null);
   const { viewMode, setViewMode } = useViewMode();
 
+  // The nav renders nothing on /studio and /product (see the early return
+  // below), so skip the fetch there rather than firing a request whose result
+  // is discarded — and whose rejection surfaces as an unhandled page error.
+  const isHidden = pathname.includes("/studio") || pathname.startsWith("/product");
+
   useEffect(() => {
+    if (isHidden) return;
+
     const fetchAbout = async () => {
-      const data = await client.fetch(aboutQueries.all);
-      setAbout(data);
+      try {
+        const data = await client.fetch(aboutQueries.all);
+        setAbout(data);
+      } catch {
+        // A missing or unreachable dataset should not take the page down.
+      }
     };
     fetchAbout();
-  }, []);
+  }, [isHidden]);
 
   const handleNavigation = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
@@ -93,7 +104,9 @@ const Navigation = () => {
     }
   };
 
-  if (pathname.includes("/studio")) return null;
+  // Product pages are a self-contained white surface with their own header and
+  // footer; the site nav would land on top of them.
+  if (isHidden) return null;
 
   return (
     <div className={styles.navigation}>

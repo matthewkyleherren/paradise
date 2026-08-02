@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 import type { Configuration } from "webpack";
 
 const nextConfig: NextConfig = {
+  // The dev server is reached over the box's public hostname, not just localhost.
+  allowedDevOrigins: ["escrtd.com", "*.escrtd.com", "217.69.0.234"],
   turbopack: {
     rules: {
       '*.glsl': {
