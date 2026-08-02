@@ -20,21 +20,6 @@
     padding-bottom: 0;
   }
 
-  // The labels are dark and sit straight on the photograph, which can be any
-  // colour. A soft light wash keeps them legible without reading as a bar.
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    height: 180%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.85),
-      rgba(255, 255, 255, 0)
-    );
-    pointer-events: none;
-    z-index: -1;
-  }
 
   // Only the controls take pointer events, so the gallery stays clickable.
   a,
